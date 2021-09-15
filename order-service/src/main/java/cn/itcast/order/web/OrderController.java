@@ -22,7 +22,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Long> createOrder(Order order){
+    public ResponseEntity<Long> createOrder(Order order) {
         Long orderId = orderService.create(order);
         return ResponseEntity.status(HttpStatus.CREATED).body(orderId);
     }

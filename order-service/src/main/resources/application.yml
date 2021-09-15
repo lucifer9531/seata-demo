@@ -4,7 +4,7 @@ spring:
   application:
     name: order-service
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://60.205.181.203/seata_demo?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
     username: root
     password: 123456
@@ -23,3 +23,19 @@ logging:
     cn.itcast: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
+
+seata:
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: ""
+      group: DEFAULT_GROUP
+      application: seata-tc-server
+      username: nacos
+      password: nacos
+  tx-service-group: seata-demo
+  service:
+    vgroup-mapping:
+      seata-demo: SH
+  data-source-proxy-mode: XA
